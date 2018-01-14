@@ -1,0 +1,6 @@
+*.pyc
+env/
+*.swp
+*.db
+migrations/
+flaskilmo.wsgi
