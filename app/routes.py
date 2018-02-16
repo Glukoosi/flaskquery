@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for
 from app import app, db
 from app.forms import RegForm, RegSwagForm
-from .models import Reg
+from app.models import Reg
 from datetime import datetime
 
 @app.route('/', methods=['GET', 'POST'])

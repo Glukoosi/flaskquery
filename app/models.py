@@ -11,6 +11,3 @@ class Reg(db.Model):
     gambina = db.Column(db.Boolean())
     avec = db.Column(db.String(64))
     free = db.Column(db.String(500))
-
-    def __repr__(self):
-        return '<User {}>'.format(self.username)
