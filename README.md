@@ -1,9 +1,7 @@
 ```
-sudo apt install virtualenv
-virtualenv env -p python3
+python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
-export FLASK_APP=ilmo.py
 
 flask db init
 flask db migrate
