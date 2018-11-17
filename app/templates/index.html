@@ -1,0 +1,37 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% extends "headers.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h1>{{ title }}</h1>
+        </div>
+    {% if starttime < nowtime < endtime %}
+    <form class="form form-horizontal" method="post" role="form">
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.string) }}
+        {{ wtf.form_field(form.boolean) }}
+        {{ wtf.form_field(form.radio) }}
+        {% for e in form.radio.errors %}
+            <p class="text-danger">{{ e }}</p>
+        {% endfor %}
+        {{ wtf.form_field(form.text) }}
+        {{ wtf.form_field(form.submit) }}
+    </form>
+    {% elif nowtime < starttime %}
+        <p>Query will start at {{ starttime }}</p>
+    {% else %}
+        <p>Query has ended</p>
+    {% endif %}
+
+    <h3>Partisipants: {{ count }}/{{ limit }}</h3>
+    {% for entry in entrys%}
+        <p>{{ entry.string[:30] }}
+        {% if loop.index > limit %}
+             (in queue)
+        {% endif %}
+        </p>
+    {% endfor %}
+    </div>
+{% endblock %}
