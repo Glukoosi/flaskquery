@@ -9,6 +9,10 @@ pip install -r requirements.txt
 
 flask run
 
+
+for prod:
+docker-compose -f docker-compose_prod.yml up -d
+
 ```
 
 ```
