@@ -1,5 +1,7 @@
+.vscode/
 *.pyc
 env/
+venv/
 *.swp
 *.db
 migrations/

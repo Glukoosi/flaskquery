@@ -1,14 +1,18 @@
 ```
+docker-compose up
+
+or
+
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 
-flask db init
-flask db migrate
-flask db upgrade
-
 flask run
 
+```
+
+```
+If you change db model you have to remove app.db
 ```
 
 flaskilmo.wsgi
