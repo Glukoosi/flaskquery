@@ -1,0 +1,103 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% extends "headers.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>{{ title }}</h1>
+    </div>
+    <h2>Osallistujat</h2>
+    <h3>OTiT: {{ o_count }}/{{ limit }}</h3>
+    <table>
+        <thead>
+        <tr>
+            <td>
+                #
+            </td>
+            <td>
+                Nimi
+            </td>
+            <td>
+                SäPo
+            </td>
+            <td>
+                Puh
+            </td>
+            <td>
+                Lähtö
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entry in o_entries %}
+            <tr>
+            <td>{{ loop.index }}.
+                {% if loop.index > limit %}
+                    (Vara)
+                {% endif %}
+            </td>
+            <td>
+                {{ entry.name }}
+            </td>
+            <td>
+                {{ entry.mail }}
+            </td>
+            <td>
+                {{ entry.phone }}
+            </td>
+            <td>
+                {{ entry.place }}
+            </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>SIK: {{ s_count }}/{{ limit }}</h3>
+    <table>
+        <thead>
+        <tr>
+            <td>
+                #
+            </td>
+            <td>
+                Nimi
+            </td>
+            <td>
+                SäPo
+            </td>
+            <td>
+                Puh
+            </td>
+            <td>
+                Lähtö
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entry in s_entries %}
+            <tr>
+            <td>{{ loop.index }}.
+                {% if loop.index > limit %}
+                    (Vara)
+                {% endif %}
+            </td>
+            <td>
+                {{ entry.name }}
+            </td>
+            <td>
+                {{ entry.mail }}
+            </td>
+            <td>
+                {{ entry.phone }}
+            </td>
+            <td>
+                {{ entry.place }}
+            </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

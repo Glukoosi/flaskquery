@@ -2,3 +2,48 @@
     margin-right: 0;
     margin-left: 0;
 }
+
+.extra-label{
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.return_msg{
+    font-size: 40px;
+    animation: flash 5s linear;
+}
+
+.flashes{
+    padding-top: 50px;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+table{
+    width: 100%;
+}
+
+body {
+    background-size: cover;
+    background: linear-gradient(#0094ff, #000000 10%) repeat-x fixed center #000000;
+    color: white;
+    font-family: "arial", serif;
+}
+
+@keyframes flash {
+    0% { background-color: rgba(236, 234, 255, 0.63)
+    }
+    100% { background-color: rgba(0, 142, 245, 0)
+    }
+}
+
+.follow {
+    pointer-events: none;
+    position: relative;
+    width: 20px;
+    height: 18px;
+}
