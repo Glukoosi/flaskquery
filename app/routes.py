@@ -40,7 +40,7 @@ def index():
         )
         db.session.add(sub)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect("https://www.otit.fi/kmp/")
     return render_template('index.html', title='KMP-2019 Ilmoittautuminen',
                            o_entries=o_entries,
                            s_entries=s_entries,
