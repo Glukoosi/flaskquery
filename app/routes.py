@@ -30,9 +30,11 @@ def index():
             name=form.name.data,
             mail=form.mail.data,
             year=form.year.data,
+            active=form.active.data,
             nonalcoholic=form.nonalcoholic.data,
             food=form.food.data,
             speech=form.speech.data,
+            speechbox=form.speechbox.data,
             other=form.other.data,
             public=form.public.data,
             datetime=nowtime

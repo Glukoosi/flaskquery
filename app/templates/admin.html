@@ -8,7 +8,6 @@
         <h1>{{ title }}</h1>
     </div>
     <h2>Osallistujat</h2>
-    <h3>OTiT: {{ o_count }}/{{ limit }}</h3>
     <table>
         <thead>
         <tr>
@@ -22,20 +21,26 @@
                 SäPo
             </td>
             <td>
-                Puh
+                vuosi
             </td>
             <td>
-                Lähtö
+                holiton
+            </td>
+            <td>
+                puhe
+            </td>
+            <td>
+                aihe
+            </td>
+            <td>
+                muuta
             </td>
         </tr>
         </thead>
         <tbody>
-        {% for entry in o_entries %}
+        {% for entry in entries %}
             <tr>
             <td>{{ loop.index }}.
-                {% if loop.index > limit %}
-                    (Vara)
-                {% endif %}
             </td>
             <td>
                 {{ entry.name }}
@@ -44,60 +49,24 @@
                 {{ entry.mail }}
             </td>
             <td>
-                {{ entry.phone }}
+                {{ entry.year }}
             </td>
             <td>
-                {{ entry.place }}
+                {{ entry.nonalcoholic }}
+            </td>
+            <td>
+                {{ entry.speechbox }}
+            </td>
+            <td>
+                {{ entry.speech }}
+            </td>
+            <td>
+                {{ entry.other }}
             </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <h3>SIK: {{ s_count }}/{{ limit }}</h3>
-    <table>
-        <thead>
-        <tr>
-            <td>
-                #
-            </td>
-            <td>
-                Nimi
-            </td>
-            <td>
-                SäPo
-            </td>
-            <td>
-                Puh
-            </td>
-            <td>
-                Lähtö
-            </td>
-        </tr>
-        </thead>
-        <tbody>
-        {% for entry in s_entries %}
-            <tr>
-            <td>{{ loop.index }}.
-                {% if loop.index > limit %}
-                    (Vara)
-                {% endif %}
-            </td>
-            <td>
-                {{ entry.name }}
-            </td>
-            <td>
-                {{ entry.mail }}
-            </td>
-            <td>
-                {{ entry.phone }}
-            </td>
-            <td>
-                {{ entry.place }}
-            </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 </div>
 {% endblock %}

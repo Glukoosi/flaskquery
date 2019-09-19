@@ -6,6 +6,7 @@ from markupsafe import Markup
 class Form(FlaskForm):
     name = StringField('Nimi', validators=[DataRequired()])
     year = StringField('Opintojen aloitusvuosi')
+    active = StringField('Hallitus- ja/tai aktiivivuodet')
     mail = StringField('Sähköpostiosoite', validators=[DataRequired()])
     nonalcoholic = BooleanField('Alkoholiton')
     food = StringField('Erityisruokavalio')
