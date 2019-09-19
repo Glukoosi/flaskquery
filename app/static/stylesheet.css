@@ -15,6 +15,17 @@
 
 .flashes{
     padding-top: 50px;
+    font-size: 72px;
+    padding-bottom: 50px;
+}
+
+.inset{
+    padding-left: 40px;
+    padding-bottom: 10px;
+}
+
+.hide_{
+    display: none;
 }
 
 html, body {
@@ -23,15 +34,24 @@ html, body {
     padding: 0;
 }
 
+.btn{
+    margin-top: 20px;
+}
+
 table{
     width: 100%;
 }
 
+.container{
+    background-color: black;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 body {
-    background-size: cover;
-    background: linear-gradient(#0094ff, #000000 10%) repeat-x fixed center #000000;
+    background-color: #351637;
     color: white;
-    font-family: "arial", serif;
+    font-family: Monospace;
 }
 
 @keyframes flash {
@@ -43,7 +63,6 @@ body {
 
 .follow {
     pointer-events: none;
-    position: relative;
-    width: 20px;
-    height: 18px;
+    position: absolute;
+    visibility: hidden;
 }

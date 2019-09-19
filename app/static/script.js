@@ -1,9 +1,30 @@
 document.addEventListener('DOMContentLoaded', function(){
-var follow1 = document.getElementById("beer4");
-var follow2 = document.getElementById("beer3");
-var follow3 = document.getElementById("beer2");
-var follow4 = document.getElementById("beer1");
-var follow5 = document.getElementById("bus");
+
+var follow1 = document.getElementById("follow5");
+var follow2 = document.getElementById("follow4");
+var follow3 = document.getElementById("follow3");
+var follow4 = document.getElementById("follow2");
+var follow5 = document.getElementById("follow1");
+
+$('input[type=checkbox][name=speechbox]').change(function() {
+        if (document.getElementById('speechbox').checked) {
+            $('#speech-info').show();
+        } else {
+            $('#speech-info').hide();
+            $('input[name=speech]').val("");
+        }
+    });
+
+
+if (window.location.href.split("#")[1] === "L%C3%A4hetetty" ) {
+    follow5 = document.getElementById("follow9");
+    follow2 = document.getElementById("follow8");
+    follow3 = document.getElementById("follow7");
+    follow4 = document.getElementById("follow6");
+    follow1 = document.getElementById("follow1");
+}
+
+
 var mouse = {x: 0, y: 0}; //mouse.x, mouse.y
 
 document.addEventListener("mousemove", getMouse);
@@ -28,13 +49,19 @@ setInterval(followMouse, 50, mouse, follow5pos, follow5);
 
 
 function getMouse(e) {
-    mouse.x = e.pageX - 11;
+    mouse.x = e.pageX - 14;
     mouse.y = e.pageY;
+
+    follow1.style.visibility = "visible";
+    follow2.style.visibility = "visible";
+    follow3.style.visibility = "visible";
+    follow4.style.visibility = "visible";
+    follow5.style.visibility = "visible";
 }
 
 function followMouse(target, beepos, bee) {
     //1. find distance X , distance Y
-    var distX = target.x + 22 - beepos.x;
+    var distX = target.x + 42 - beepos.x;
     var distY = target.y - beepos.y;
     //Easing motion
     //Progressive reduction of distance
@@ -42,8 +69,8 @@ function followMouse(target, beepos, bee) {
     beepos.y += distY / (3 );
 
     bee.style.left = beepos.x + "px";
-    bee.style.top = beepos.y + "px";
-
+    bee.style.top = beepos.y - 10 + "px";
+    bee.style.transform = 'rotate('+ Math.atan2(target.y - beepos.y, target.x - beepos.x) + 'rad)';
 
 }
 

@@ -4,44 +4,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>KMP 2019 ILMO</title>
+    <title>{{ title }}</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.otit.fi/kmp/static/stylesheet.css">
+    <link rel="stylesheet" href="{{ appurl }}/static/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-    <script src="https://www.otit.fi/kmp/static/script.js"></script>
+    <script src="{{ appurl }}/static/script.js"></script>
 </head>
 <body>
-<div class="return_msg">
-    <div class="container">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class=flashes>
-                    {% for message in messages %}
-                        {{ message }}<br>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-    </div>
-    <img id="bus" class="follow"
-         src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/153/bus_1f68c.png">
-    <img id="beer1" class="follow"
-         src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/153/beer-mug_1f37a.png">
-    <img id="beer2" class="follow"
-         src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/153/beer-mug_1f37a.png">
 
-    <img id="beer3" class="follow"
-         src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/153/beer-mug_1f37a.png">
+    <img id="follow1" class="follow"
+         src="{{ appurl }}/static/img/pacmanB.gif">
+    <img id="follow2" class="follow followA"
+         src="{{ appurl }}/static/img/ghost1B.gif">
+    <img id="follow3" class="follow followA"
+         src="{{ appurl }}/static/img/ghost2B.gif">
 
-    <img id="beer4" class="follow"
-         src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/153/beer-mug_1f37a.png">
+    <img id="follow4" class="follow followA"
+         src="{{ appurl }}/static/img/ghost3B.gif">
 
-</div>
+    <img id="follow5" class="follow followA"
+         src="{{ appurl }}/static/img/ghost4B.gif">
+    <img id="follow6" class="follow followB"
+         src="{{ appurl }}/static/img/ghostXB.gif">
+    <img id="follow7" class="follow followB"
+         src="{{ appurl }}/static/img/ghostXB.gif">
+    <img id="follow8" class="follow followB"
+         src="{{ appurl }}/static/img/ghostXB.gif">
+    <img id="follow9" class="follow followB"
+         src="{{ appurl }}/static/img/ghostXB.gif">
 {% block content %}{% endblock %}
 </body>
 </html>

@@ -4,65 +4,101 @@
 
 {% block content %}
     <div class="container">
-    <div class="page-header">
-        <h1>{{ title }}</h1>
-    </div>
-    <p>
-        Se olisi taas se aika vuodesta kun OTiT ja SIK suuntaavat yhdessä katselemaan maailma menoa. Tänä vuonna
-        suuntaamme otaniemeen jossa OTiT puuhailee TiTeenien parissa ja SIK puuhailee sisarkiltansa kanssa. Mutta ei
-        reissu pelkkää hupailua ole, sillä teemme toki yritysvierailun firmaan X.
-    </p>
-    <p>
-        Excu starttaa 15.3 klo 07:00 yliopistolta ja kustantaa osallistujilta tasaiset 30 euroa. Takaisin olemme oulussa
-        joskus sunnuntaina.
-    </p>
-    <p>
-        Ilmo aukeaa 18.2.2019 klo 13:37 ja sulkeutuu 8.3.2019 klo 23.59
-    </p>
-    {% if starttime < nowtime < endtime %}
-        <form class="form form-horizontal" method="post" role="form">
-            {{ form.hidden_tag() }}
-            {{ wtf.form_field(form.name) }}
-            <label class="extra-label">Kilta*</label>
-            {{ wtf.form_field(form.guild) }}
-            {% for e in form.guild.errors %}
-                <p class="text-danger">{{ e }}</p>
-            {% endfor %}
-            {{ wtf.form_field(form.mail) }}
-            {{ wtf.form_field(form.phone) }}
-            {{ wtf.form_field(form.place) }}
-            {{ wtf.form_field(form.consent) }}
-            {{ wtf.form_field(form.submit) }}
-        </form>
-    {% elif nowtime < starttime %}
-        <p>Ilmoittautuminen ei ole vielä alkanut</p>
-    {% else %}
-        <p>Ilmoittautuminen on päättynyt</p>
-    {% endif %}
-    <p>
-        Tietosuojasuojaselosteen voit lukea täältä: <a href="https://www.otit.fi/kmp/static/KMPTietosuoja.pdf">Tietosuojaseloste</a>
-    </p>
-    <h2>Osallistujat</h2>
-    <div class="row">
-        <div class="col-sm-6">
-            <h3>OTiT: {{ o_count }}/{{ limit }}</h3>
-            {% for entry in o_entries %}
-                <p>{{ loop.index }}. {{ entry["name"][:30] }}
-                    {% if loop.index > limit %}
-                        (Varasijalla)
-                    {% endif %}
-                </p>
-            {% endfor %}
+
+        <div class="return_msg">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class=flashes>
+                        {% for message in messages %}
+                            {{ message }}<br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
         </div>
-        <div class="col-sm-6">
-            <h3>SIK: {{ s_count }}/{{ limit }}</h3>
-            {% for entry in s_entries %}
-                <p>{{ loop.index }}. {{ entry["name"][:30] }}
-                    {% if loop.index > limit %}
-                        (Varasijalla)
+
+        <h2>Tervetuloa Grand OTiT 2019 -alumnitapahtumaan!</h2>
+        <p>
+            Tapahtuman tarkoituksena on koota Oulun Tietoteekkarit ry:n vanhoja ja uusia toimijoita yhteen viettämään
+            iltaa, muistelemaan menneitä ja ihmettelemään nykyajan kiltatoimintaa.
+        </p>
+        <p>
+            Grand OTiT järjestetään lauantaina 19.10.2019 klo 17 alkaen Teekkaritalolla. Illan ohjelma tarkentuu
+            lähiaikoina, mutta luvassa on ainakin seuraavaa:
+        <ul>
+            <li>Killan kuulumisia viime ajoilta</li>
+            <li>Illallinen</li>
+            <li>Yllätysohjelmaa!</li>
+            <li>Saunomista (ja ehkä paljukin)</li>
+            <li>Vapaata seurustelua & biletystä yömyöhään</li>
+        </ul>
+        </p>
+        <p>
+            Tilaisuus pyritään pitämään mahdollisimman rentona, ilman kankeita kaavoja, jotta keskustelu pysyisi vapaana
+            ja aktiivisena. Puheiden pitäminen ja laulujen toivominen on kuitenkin erittäin toivottua. Mikäli tiedät jo
+            ennakkoon, että haluaisit pitää puheenvuoron tai ohjelmanumeron, voit kertoa siitä ilmoittautuessa, niin
+            sisällyttämme sen ilomielin ohjelmaan.
+        </p>
+        <p>
+            Illallisella tarjoillaan ruoka sekä ruokajuomat. Hintaa tälle lystille kertyy 30 euroa/henkilö, jolla
+            katetaan tilavuokra ja tyypillistä sitsimuonaa laadukkaammat tarjoilut. Pukukoodi on smart casual.
+        </p>
+        <p>
+            Kysymykset voi osoittaa alumnivastaava Uula Rannalle:
+            <br>
+            alumnivastaava@otit.fi / Runtu @IRCnet / @Uular @Telegram
+        </p>
+        <p>
+            Ilmoittautuminen aukeaa 23.9. Kello 13:37 ja sulkeutuu 10.10. klo 23:59
+        </p>
+        {% if starttime < nowtime < endtime %}
+            <form class="form form-horizontal" method="post" role="form">
+                {{ form.hidden_tag() }}
+                {{ wtf.form_field(form.name) }}
+                {{ wtf.form_field(form.year) }}
+                {{ wtf.form_field(form.mail) }}
+
+                <label class="extra-label">Juoma</label>
+                {{ wtf.form_field(form.nonalcoholic) }}
+                {{ wtf.form_field(form.food) }}
+
+                <label class="extra-label">Puhe</label>
+                {{ wtf.form_field(form.speechbox) }}
+                <div id="speech-info" class="inset hide_">
+                    {{ wtf.form_field(form.speech) }}
+                </div>
+                {{ wtf.form_field(form.other) }}
+                {{ wtf.form_field(form.public) }}
+                {{ wtf.form_field(form.consent) }}
+
+
+                <button type=submit class="btn btn-primary"><img src="{{ appurl }}/static/img/cherry.png"> Lähetä <img src="{{ appurl }}/static/img/cherry.png"></button>
+
+
+            </form>
+        {% elif nowtime < starttime %}
+            <p>Ilmoittautuminen ei ole vielä alkanut</p>
+        {% else %}
+            <p>Ilmoittautuminen on päättynyt</p>
+        {% endif %}
+        <p>
+            Tietosuojasuojaselosteen voit lukea täältä: <a href="{{ appurl }}/static/GrandOTiTtietosuoja.pdf">Tietosuojaseloste</a>
+        </p>
+        <h2>Osallistujat</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                {% for entry in entries %}
+                    {% if entry.public %}
+                    <p>{{ loop.index }}. {{ entry["name"][:30] }}
+                    </p>
+                    {% else %}
+                    <p>{{ loop.index }}. Remminorsu
+                    </p>
                     {% endif %}
-                </p>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
+
     </div>
 {% endblock %}
