@@ -90,13 +90,12 @@
         <div class="row">
             <div class="col-sm-6">
                 {% for entry in entries %}
-                    {% if entry.public %}
-                    <p>{{ loop.index }}. {{ entry["name"][:30] }}
+                    <p>
+                        {{ loop.index }}.
+                        {% if entry.public %}
+                            {{ entry["name"][:30] }}{% else %}
+                            Remminorsu{% endif %}{% if entry.year %}, {{ entry.year }}{% endif %}
                     </p>
-                    {% else %}
-                    <p>{{ loop.index }}. Remminorsu
-                    </p>
-                    {% endif %}
                 {% endfor %}
             </div>
         </div>
