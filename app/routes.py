@@ -35,7 +35,7 @@ def index():
                 name = entry.name
             else:
                 name = "Fuksinorsu"
-            if len(fuksit) >= 30:
+            if len(fuksit) >= 42:
                 name += " Varasijalla"
             fuksit.append(name)
         elif entry.status == "pro":
@@ -51,7 +51,7 @@ def index():
                 name = entry.name
             else:
                 name = "varmaa sandalf"
-            if len(fuksit) >= 9:
+            if len(hallitus) >= 9:
                 name += " Varasijalla"
             hallitus.append(name)
         elif entry.status == "koops":
@@ -59,7 +59,7 @@ def index():
                 name = entry.name
             else:
                 name = "koopsnorsu"
-            if len(fuksit) >= 1:
+            if len(koops) >= 1:
                 name += " Varasijalla"
             koops.append(name)
         elif entry.status == "teekkari":
@@ -67,7 +67,7 @@ def index():
                 name = entry.name
             else:
                 name = "Remminorsu"
-            if len(fuksit) >= 1:
+            if len(teekkarit) >= 0:
                 name += " Varasijalla"
             teekkarit.append(name)
 
