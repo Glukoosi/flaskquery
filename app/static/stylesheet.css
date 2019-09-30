@@ -49,8 +49,8 @@ table{
 }
 
 body {
-    background-color: #351637;
-    color: white;
+    background-color: #370c1d;
+    color: #2fff00;
     font-family: Monospace;
 }
 
@@ -65,4 +65,5 @@ body {
     pointer-events: none;
     position: absolute;
     visibility: hidden;
+    max-height: 30px;
 }

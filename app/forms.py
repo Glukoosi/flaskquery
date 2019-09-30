@@ -5,14 +5,10 @@ from markupsafe import Markup
 
 class Form(FlaskForm):
     name = StringField('Nimi', validators=[DataRequired()])
-    year = StringField('Opintojen aloitusvuosi (julkaistaan osallistujalistassa)')
-    active = StringField('Hallitus- ja/tai aktiivivuodet')
     mail = StringField('Sähköpostiosoite', validators=[DataRequired()])
-    nonalcoholic = BooleanField('Alkoholiton')
-    food = StringField('Erityisruokavalio')
-    speechbox = BooleanField('Haluan pitää puheenvuoron')
-    speech = StringField('Edustamani taho tai puheenvuoron aihe')
-    other = StringField('Vapaa sana')
+    phone = StringField('Puhelinnumero', validators=[DataRequired()])
+    start = RadioField('Bussiin nousu paikka', choices=(['yliopisto', 'Yliopisto'],['tuira', 'Tuira'],['linja-autoasema','Linja-autoasema']), validators=[InputRequired()])
+    status = RadioField('Olen', choices=(['fuksi', 'Fuksi'],['pro', 'RRO'],['hallituslainen','Hallituslainen'],['koops','koops'],['teekkari','Teekkari']), validators=[InputRequired()])
     public = BooleanField('Nimeni saa julkaista')
     consent = BooleanField(
         'Hyväksyn henkilötietojeni käsittelyn tietosuojaselosteen mukaisesti.',

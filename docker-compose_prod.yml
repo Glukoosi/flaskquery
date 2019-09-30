@@ -6,7 +6,7 @@ services:
     env_file:
       - prod.env
     ports:
-     - "6726:5000"
+     - "6727:5000"
     volumes:
      - .:/app
     command: gunicorn -w 4 -b 0.0.0.0:5000 app:app

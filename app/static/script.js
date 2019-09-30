@@ -70,8 +70,6 @@ function followMouse(target, beepos, bee) {
 
     bee.style.left = beepos.x + "px";
     bee.style.top = beepos.y - 10 + "px";
-    bee.style.transform = 'rotate('+ Math.atan2(target.y - beepos.y, target.x - beepos.x) + 'rad)';
-
 }
 
     // your code goes here

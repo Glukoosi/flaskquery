@@ -18,63 +18,41 @@
 
         </div>
 
-        <h2>Tervetuloa Grand OTiT 2019 -alumnitapahtumaan!</h2>
+        <h2>Fuksi excursio</h2>
         <p>
-            Tapahtuman tarkoituksena on koota Oulun Tietoteekkarit ry:n vanhoja ja uusia toimijoita yhteen viettämään
-            iltaa, muistelemaan menneitä ja ihmettelemään nykyajan kiltatoimintaa.
+            Olisi se aika vuodesta kun järjestämme perinteikkään fuksicursion. Lähdemme 11.10 perjantaina liikkeelle klo 8:00 linnanmaalta. Poimimme porukkaa mukaan vielä tuiran pysäkiltä ja linja-autoasemalta. Siitäpä suuntaamme yritysvierailulle firmaan X jonka jälkeen kuljemme Haaparannan kautta Rovaniemelle rellestämään. Rovaniemellä on tiedossa hauskaa kilpailumuotoista ohjelmaa. Paluu ouluun tapahtuu lauantain puolella noin klo 7 aikoihin.
         </p>
         <p>
-            Grand OTiT järjestetään lauantaina 19.10.2019 klo 17 alkaen Teekkaritalolla. Illan ohjelma tarkentuu
-            lähiaikoina, mutta luvassa on ainakin seuraavaa:
-        <ul>
-            <li>Killan kuulumisia viime ajoilta</li>
-            <li>Illallinen</li>
-            <li>Yllätysohjelmaa!</li>
-            <li>Saunomista (ja ehkä paljukin)</li>
-            <li>Vapaata seurustelua & biletystä yömyöhään</li>
-        </ul>
+           Lysti on kaikille fukseille ILMAISTA. Mahdolliset teekkarit, jos heille tilaa jää, joutuvat kaivamaan kuvetta 20€ edestä
         </p>
         <p>
-            Tilaisuus pyritään pitämään mahdollisimman rentona, ilman kankeita kaavoja, jotta keskustelu pysyisi vapaana
-            ja aktiivisena. Puheiden pitäminen ja laulujen toivominen on kuitenkin erittäin toivottua. Mikäli tiedät jo
-            ennakkoon, että haluaisit pitää puheenvuoron tai ohjelmanumeron, voit kertoa siitä ilmoittautuessa, niin
-            sisällyttämme sen ilomielin ohjelmaan.
-        </p>
-        <p>
-            Illallisella tarjoillaan ruoka sekä ruokajuomat. Hintaa tälle lystille kertyy 30 euroa/henkilö, jolla
-            katetaan tilavuokra ja tyypillistä sitsimuonaa laadukkaammat tarjoilut. Pukukoodi on smart casual.
-        </p>
-        <p>
-            Kysymykset voi osoittaa alumnivastaava Uula Rannalle:
-            <br>
-            alumnivastaava@otit.fi / Runtu @IRCnet / @Uular @Telegram
-        </p>
-        <p>
-            Ilmoittautuminen aukeaa 24.9. Kello 13:37 ja sulkeutuu 10.10. klo 23:59
+            Ilmoittautuminen aukeaa xx.xx. Kello 13:37 ja sulkeutuu xx.xx. klo xx:xx
         </p>
         {% if starttime < nowtime < endtime %}
             <form class="form form-horizontal" method="post" role="form">
                 {{ form.hidden_tag() }}
                 {{ wtf.form_field(form.name) }}
                 {{ wtf.form_field(form.mail) }}
-                {{ wtf.form_field(form.year) }}
-                {{ wtf.form_field(form.active) }}
+                {{ wtf.form_field(form.phone) }}
 
-                <label class="extra-label">Juoma</label>
-                {{ wtf.form_field(form.nonalcoholic) }}
-                {{ wtf.form_field(form.food) }}
+                <label class="extra-label">Bussiin nousu paikka</label>
+                {{ wtf.form_field(form.start) }}
+                {% for e in form.start.errors %}
+                    <p class="text-danger">TÄYTÄ</p>
+                {% endfor %}
+                <label class="extra-label">Olen</label>
 
-                <label class="extra-label">Puhe</label>
-                {{ wtf.form_field(form.speechbox) }}
-                <div id="speech-info" class="inset hide_">
-                    {{ wtf.form_field(form.speech) }}
-                </div>
-                {{ wtf.form_field(form.other) }}
+                {{ wtf.form_field(form.status) }}
+                {% for e in form.status.errors %}
+                    <p class="text-danger">TÄYTÄ</p>
+                {% endfor %}
+
+                <label class="extra-label">GDPR</label>
                 {{ wtf.form_field(form.public) }}
                 {{ wtf.form_field(form.consent) }}
 
 
-                <button type=submit class="btn btn-primary"><img src="{{ appurl }}/static/img/cherry.png"> Lähetä <img src="{{ appurl }}/static/img/cherry.png"></button>
+                <button type=submit class="btn btn-primary"> Lähetä </button>
 
 
             </form>
@@ -84,17 +62,43 @@
             <p>Ilmoittautuminen on päättynyt</p>
         {% endif %}
         <p>
-            Tietosuojasuojaselosteen voit lukea täältä: <a href="{{ appurl }}/static/GrandOTiTtietosuoja.pdf">Tietosuojaseloste</a>
+            Tietosuojasuojaselosteen voit lukea täältä: <a href="{{ appurl }}/static/FucuTietosuoja.pdf">Tietosuojaseloste</a>
         </p>
         <h2>Osallistujat</h2>
         <div class="row">
-            <div class="col-sm-6">
-                {% for entry in entries %}
+            <div class="col-sm-4">
+            <h3>Fuksit:</h3>
+                {% for entry in fuksit %}
                     <p>
-                        {{ loop.index }}.
-                        {% if entry.public %}
-                            {{ entry["name"][:30] }}{% else %}
-                            Remminorsu{% endif %}{% if entry.year %}, {{ entry.year }}{% endif %}
+                        {{ loop.index }}. {{ entry }}
+                    </p>
+                {% endfor %}
+            </div>
+        <div class="col-sm-4">
+            <h3>PROt:</h3>
+                {% for entry in prot %}
+                    <p>
+                        {{ loop.index }}. {{ entry }}
+                    </p>
+                {% endfor %}
+            <h3>Hallituslaiset:</h3>
+                {% for entry in hallitus %}
+                    <p>
+                        {{ loop.index }}. {{ entry }}
+                    </p>
+                {% endfor %}
+            <h3>koopsit:</h3>
+                {% for entry in koops %}
+                    <p>
+                        {{ loop.index }}. {{ entry }}
+                    </p>
+                {% endfor %}
+            </div>
+        <div class="col-sm-4">
+            <h3>Riviteekkarit:</h3>
+                {% for entry in teekkarit %}
+                                       <p>
+                        {{ loop.index }}. {{ entry }}
                     </p>
                 {% endfor %}
             </div>

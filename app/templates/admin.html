@@ -21,22 +21,13 @@
                 SäPo
             </td>
             <td>
-                vuosi
+                puh
             </td>
             <td>
-                aktiivi
+                lähtö
             </td>
             <td>
-                holiton
-            </td>
-            <td>
-                puhe
-            </td>
-            <td>
-                aihe
-            </td>
-            <td>
-                muuta
+                status
             </td>
         </tr>
         </thead>
@@ -52,22 +43,13 @@
                 {{ entry.mail }}
             </td>
             <td>
-                {{ entry.year }}
+                {{ entry.phone }}
             </td>
             <td>
-                {{ entry.active }}
+                {{ entry.start }}
             </td>
             <td>
-                {{ entry.nonalcoholic }}
-            </td>
-            <td>
-                {{ entry.speechbox }}
-            </td>
-            <td>
-                {{ entry.speech }}
-            </td>
-            <td>
-                {{ entry.other }}
+                {{ entry.status }}
             </td>
             </tr>
         {% endfor %}

@@ -23,19 +23,64 @@ def index():
 
     entries = Model.query.all()
 
+    fuksit = []
+    prot = []
+    hallitus = []
+    koops = []
+    teekkarit = []
+
+    for entry in entries:
+        if entry.status == "fuksi":
+            if entry.public:
+                name = entry.name
+            else:
+                name = "Fuksinorsu"
+            if len(fuksit) >= 30:
+                name += " Varasijalla"
+            fuksit.append(name)
+        elif entry.status == "pro":
+            if entry.public:
+                name = entry.name
+            else:
+                name = "Pronorsu"
+            if len(prot) >= 6:
+                name += " Varasijalla"
+            prot.append(name)
+        elif entry.status == "hallituslainen":
+            if entry.public:
+                name = entry.name
+            else:
+                name = "varmaa sandalf"
+            if len(fuksit) >= 9:
+                name += " Varasijalla"
+            hallitus.append(name)
+        elif entry.status == "koops":
+            if entry.public:
+                name = entry.name
+            else:
+                name = "koopsnorsu"
+            if len(fuksit) >= 1:
+                name += " Varasijalla"
+            koops.append(name)
+        elif entry.status == "teekkari":
+            if entry.public:
+                name = entry.name
+            else:
+                name = "Remminorsu"
+            if len(fuksit) >= 1:
+                name += " Varasijalla"
+            teekkarit.append(name)
+
+
     if form.validate_on_submit():
         flash('Kiitos ilmoittautumisesta!')
         sub = Model(
 
             name=form.name.data,
             mail=form.mail.data,
-            year=form.year.data,
-            active=form.active.data,
-            nonalcoholic=form.nonalcoholic.data,
-            food=form.food.data,
-            speech=form.speech.data,
-            speechbox=form.speechbox.data,
-            other=form.other.data,
+            phone=form.phone.data,
+            start=form.start.data,
+            status=form.status.data,
             public=form.public.data,
             datetime=nowtime
         )
@@ -43,8 +88,12 @@ def index():
         db.session.add(sub)
         db.session.commit()
         return redirect(appurl+"#Lähetetty")
-    return render_template('index.html', title='Grand OTiT',
-                           entries=entries,
+    return render_template('index.html', title='Fucu Ilmo',
+                           fuksit=fuksit,
+                           prot=prot,
+                           hallitus=hallitus,
+                           koops=koops,
+                           teekkarit=teekkarit,
                            starttime=starttime,
                            endtime=endtime,
                            nowtime=nowtime,
@@ -55,5 +104,5 @@ def index():
 @basic_auth.required
 def admin():
     entries = Model.query.all()
-    return render_template('admin.html', title='Grand OTiT', appurl=appurl,
+    return render_template('admin.html', title='FUCU admin', appurl=appurl,
                            entries=entries)
