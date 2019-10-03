@@ -9,14 +9,19 @@
 }
 
 .return_msg{
-    font-size: 40px;
-    animation: flash 5s linear;
+}
+
+a{
+    color: #2fff00;
+    text-decoration: underline;
 }
 
 .flashes{
-    padding-top: 50px;
-    font-size: 72px;
-    padding-bottom: 50px;
+    margin-top: 10px;
+    padding-top: 20px;
+    font-size: 48px;
+    padding-bottom: 20px;
+    animation: flash 5s linear;
 }
 
 .inset{
@@ -42,28 +47,33 @@ table{
     width: 100%;
 }
 
+.right{
+    text-align: right;
+}
+
 .container{
     background-color: black;
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
+.foot{
+    text-align: center;
+    color: #001c0e;
+    padding: 20px;
+}
+
 body {
-    background-color: #370c1d;
+    background-color: #001c0e;
     color: #2fff00;
     font-family: Monospace;
 }
 
 @keyframes flash {
-    0% { background-color: rgba(236, 234, 255, 0.63)
+    0% { box-shadow: 0 0 4px 10px #7d7d7d;
+        background-color: #7d7d7d;
     }
-    100% { background-color: rgba(0, 142, 245, 0)
+    100% { box-shadow: 0 0 4px 10px #000000;
+        background-color: black;
     }
-}
-
-.follow {
-    pointer-events: none;
-    position: absolute;
-    visibility: hidden;
-    max-height: 30px;
 }

@@ -4,57 +4,79 @@
 
 {% block content %}
 <div class="container">
+
+    <div class="return_msg">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class=flashes>
+                    {% for message in messages %}
+                        {{ message }}<br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+    </div>
+
     <div class="page-header">
         <h1>{{ title }}</h1>
     </div>
-    <h2>Osallistujat</h2>
+    <form action="{{ appurl + '/admin' }}" method="post">
+    <p>
+    Premium url passu
+    <input type="text" name="adminpass" value="{{ admin }}"/>
+    </p>
+
     <table>
         <thead>
         <tr>
             <td>
-                #
+                short
             </td>
             <td>
-                Nimi
+                url
             </td>
             <td>
-                SäPo
+                expiration
             </td>
             <td>
-                puh
+                perma
             </td>
             <td>
-                lähtö
+                +31days
             </td>
             <td>
-                status
+                delete
             </td>
         </tr>
         </thead>
         <tbody>
         {% for entry in entries %}
             <tr>
-            <td>{{ loop.index }}.
+            <td>
+                {{ entry.short }}
             </td>
             <td>
-                {{ entry.name }}
+                {{ entry.url }}
             </td>
             <td>
-                {{ entry.mail }}
+                {{ entry.expiration }}
             </td>
             <td>
-                {{ entry.phone }}
+                 <input class="acceptbutton" type="radio" name="{{ entry.id }}" value="perma">
             </td>
             <td>
-                {{ entry.start }}
+                 <input class="acceptbutton" type="radio" name="{{ entry.id }}" value="prolong">
             </td>
             <td>
-                {{ entry.status }}
+                 <input class="acceptbutton" type="radio" name="{{ entry.id }}" value="delete">
             </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
+    <input style="float: right;" type="submit" value="SUBMIT"/>
+    </form>
 </div>
 {% endblock %}

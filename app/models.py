@@ -2,10 +2,12 @@ from app import db
 
 class Model(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64))
-    mail = db.Column(db.String(64))
-    phone = db.Column(db.String(64))
-    start = db.Column(db.String(64))
-    status = db.Column(db.String(64))
-    public = db.Column(db.Boolean())
-    datetime = db.Column(db.DateTime())
+    short = db.Column(db.String(64))
+    url = db.Column(db.String(64))
+    public = db.Column(db.Boolean)
+    expiration = db.Column(db.String(64))
+
+
+class Admin(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    adminpass = db.Column(db.String(64))
