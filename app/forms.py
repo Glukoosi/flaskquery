@@ -4,9 +4,9 @@ from wtforms.validators import DataRequired
 from markupsafe import Markup
 
 class Form(FlaskForm):
-    url = StringField('url', validators=[DataRequired()])
-    short = StringField('lyhyt', validators=[DataRequired()])
-    public = BooleanField('Listaa osoite tälle sivustolle.')
+    url = StringField('Alkuperäinen URL', validators=[DataRequired()])
+    short = StringField('Lyhenne', validators=[DataRequired()])
+    public = BooleanField('Listaa osoite tälle sivustolle.', default=True)
     premium = BooleanField('Virallinen osoite')
     premiumpass = PasswordField('Salasana')
 

@@ -27,6 +27,7 @@
             {{ form.hidden_tag() }}
             {{ wtf.form_field(form.url) }}
             {{ wtf.form_field(form.short) }}
+            <div class="urlhelp">Esikatselu: {{ appurl }}<span id="premiumasd">/asd/</span><span id="urlfil"></span></div>
             {{ wtf.form_field(form.public) }}
             {{ wtf.form_field(form.premium) }}
             <div id="premium-show" class="inset hide_">
@@ -43,10 +44,10 @@
                 {% if entry.public %}
                     <tr>
                         <td>
-                            <a target="_blank" href="asd.otit.fi/{{ entry.short }}">asd.otit.fi/{{ entry.short }}</a>
+                            <a class="left" target="_blank" href="{{ appurl }}/{{ entry.short }}">{{ entry.short }}</a>
                         </td>
                         <td>
-                            <a target="_blank" href="{{ entry.url }}">{{ entry.url }}</a>
+                            <a class="left" target="_blank" href="{{ entry.url }}">{{ entry.url }}</a>
                         </td>
                         <td class="right">
                             {{ entry.expiration }}

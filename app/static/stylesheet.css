@@ -45,10 +45,19 @@ html, body {
 
 table{
     width: 100%;
+
 }
 
 .right{
     text-align: right;
+}
+
+.left{
+    padding-right: 20px;
+}
+.urlhelp{
+    margin-top: -10px;
+    padding-bottom: 10px;
 }
 
 .container{

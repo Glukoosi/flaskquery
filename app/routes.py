@@ -34,12 +34,12 @@ def index():
 
         if short in reserved: #OR not valid short url ??? glukoos ples
             flash('Lyhenne ei saatavilla')
-            return render_template('index.html', title='asd.otit.fi', form=form, entries=entries)
+            return render_template('index.html', title='asd.otit.fi', form=form, entries=entries, appurl=appurl)
 
         if form.premium.data:
             if form.premiumpass.data != admin:
                 flash('Väärä salasana. :(')
-                return render_template('index.html', title='asd.otit.fi', form=form, entries=entries)
+                return render_template('index.html', title='asd.otit.fi', form=form, entries=entries, appurl=appurl)
         else:
             short = 'asd/' + short
 
@@ -55,7 +55,7 @@ def index():
                 else:
                     if datetime.strptime(entry.expiration, '%Y-%m-%d %H:%M:%S.%f') > nowtime:
                         flash('Lyhenne jo käytössä :(')
-                        return render_template('index.html', title='asd.otit.fi', form=form, entries=entries)
+                        return render_template('index.html', title='asd.otit.fi', form=form, entries=entries, appurl=appurl)
                     else:
                         db.session.delete(entry)
         if new:
@@ -66,11 +66,11 @@ def index():
             expiration=expiration,
             public=public
         )
-
+        flash(appurl + '/' + short)
         db.session.add(sub)
         db.session.commit()
         return redirect(appurl)
-    return render_template('index.html', title='asd.otit.fi', form=form, entries=entries)
+    return render_template('index.html', title='asd.otit.fi', form=form, entries=entries, appurl=appurl)
 
 
 
