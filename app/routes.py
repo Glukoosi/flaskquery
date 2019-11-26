@@ -4,6 +4,8 @@ from app.forms import Form
 from app.models import Model, Admin
 from datetime import datetime, timedelta
 from flask_basicauth import BasicAuth
+
+from validator_collection import checkers
 import os
 
 app.config['BASIC_AUTH_USERNAME'] = os.environ.get("ADMIN_USER") or 'admin'
@@ -32,7 +34,7 @@ def index():
         expiration = nowtime + timedelta(days=31)
         public = form.public.data
 
-        if short in reserved: #OR not valid short url ??? glukoos ples
+        if short in reserved or not checkers.is_url(url):
             flash('Lyhenne ei saatavilla')
             return render_template('index.html', title='asd.otit.fi', form=form, entries=entries, appurl=appurl)
 
